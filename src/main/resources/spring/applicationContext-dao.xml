@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据源 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 配置SqlMapConfig.xml -->
+		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
+	</bean>
+		
+	<!-- 
+		使用mapper 批量扫描器扫描mapper接口
+		不需要id，规则：mapper.xml 与 mapper.java 同名并且在同一个包下	
+		扫描出来的mapper会自动向spring容器中注册，bean的id就是类名（首字母小写）
+	 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 配置会话工厂 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"></property>
+		<!-- 
+			扫描包的路径
+			如果有多个mapper的包，那就用半角的 ',' 来隔开	
+		 -->
+		<property name="basePackage" value="com.lee.ssm.dao.mapper"></property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<!-- 定义别名 -->
+	<typeAliases>
+		<!-- 批量别名定义
+		name：指定包名，将包下边的所有pojo定义别名 ，别名为类名（首字母大写或小写都行）
+		 -->
+		<package name="com.mybatis.bean"/>
+	</typeAliases>
+	
+</configuration>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lee.ssm.dao.mapper.UserMapper" >
+
+	<select id="findUserById" parameterType="int" resultType="com.lee.ssm.bean.User">
+		SELECT * FROM USER WHERE id = #{id}
+	</select>
+	
+	<insert id="insertUser" parameterType="com.lee.ssm.bean.User">
+		insert into user(username,sex) values(#{name},#{sex})
+	</insert>
+	
+	<delete id="deleteUser" parameterType="int">
+	   delete from user where id=#{id}
+	</delete>
+	
+	<update id="updateUser" parameterType="com.lee.ssm.bean.User">
+	   update user set username=#{name},sex=#{sex}  where id=#{id}
+	</update>
+	
+</mapper>
