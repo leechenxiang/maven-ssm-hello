@@ -45,6 +45,12 @@
 				**这个配置将影响数据存储，必须根据情况选择。 
 		 -->
 		<tx:attributes>
+			<!-- 
+				name: 目标方法的范围, 例如: save* 就是以save开头的所有方法名(saveUser, saveStudent...)
+				isolation: 数据库隔离级别, 一般都是默认default, 有脏读幻读不可重复读等, 设置后会对数据库性能有一定的影响
+				read-only: true只读事务 false读写事务
+				propagation: 事务的传播属性, 可以解决事务的嵌套问题
+			 -->
 			<tx:method name="save*" propagation="REQUIRED"/>
 			<tx:method name="insert*" propagation="REQUIRED"/>
 			<tx:method name="update*" propagation="REQUIRED"/>
